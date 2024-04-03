@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>app.gotempest.Desktop</id>
+  <name>Tempest</name>
+  <project_license>LicenseRef-proprietary</project_license>
+  <developer_name>Atlas Express LLC</developer_name>
+  <summary>Desktop Terminal App</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <launchable type="desktop-id">app.gotempest.Desktop.desktop</launchable>
+  <url type="homepage">https://gotempest.app/</url>
+  <url type="help">https://gotempest.app/</url>
+  <description>
+    <p>A world-class terminal emulator for the modern web.</p>
+    <p>NOTE: This wrapper is not verified by, affiliated with, or supported by Tempest.</p>
+  </description>
+  <categories>
+    <category>Network</category>
+  </categories>
+  <releases>
+    <release version="1.2.0" date="2024-04-03"/>
+  </releases>
+  <content_rating type="oars-1.1"/>
+</component>

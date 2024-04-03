@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Tempest
+Exec=tempest %U
+Terminal=false
+Type=Application
+Icon=app.gotempest.Desktop
+StartupWMClass=tempest-desktop
+Comment=A world-class terminal emulator for the modern web
+MimeType=x-scheme-handler/tempest;
+Categories=Utility;
+SingleMainWindow=true
+X-GNOME-SingleWindow=true
+X-SingleMainWindow=true

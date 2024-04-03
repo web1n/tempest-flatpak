@@ -1,0 +1,77 @@
+id: app.gotempest.Desktop
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+base: org.electronjs.Electron2.BaseApp
+base-version: '23.08'
+command: tempest
+separate-locales: false
+
+finish-args:
+  - --share=network
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --device=dri
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /man
+  - /share/doc
+  - /share/gtk-doc
+  - /share/man
+  - /share/pkgconfig
+  - '*.la'
+  - '*.a'
+
+modules:
+  - name: fontconfig
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 local.conf -t $FLATPAK_DEST/etc/fonts/
+      - install -Dm644 70-noto-cjk.conf -t $FLATPAK_DEST/etc/fonts/conf.d/
+    sources:
+      - type: file
+        path: local.conf
+      - type: file
+        url: https://gitlab.archlinux.org/archlinux/packaging/packages/noto-fonts-cjk/-/raw/5fd3534bf7a6e26c7506dc8f40dcd89f37d35627/70-noto-cjk.conf
+        sha256: 2417ac0e6720fe8da55ee59f16e36cfe96737bc21432460a322bb0f395e3a521
+
+  - name: tempest-deb
+    buildsystem: simple
+    build-commands:
+      - bsdtar --to-stdout -xf tempest.deb data.* | bsdtar -xf -
+      - mkdir $FLATPAK_DEST/tempest/
+      - mv opt/Tempest/* $FLATPAK_DEST/tempest/
+      - rm -rf opt usr data.* tempest.deb
+    sources:
+      - type: file
+        url: https://pub-b3510bbcffe248beac5685e7c69bb744.r2.dev/tempest-desktop_1.2.0_amd64.deb
+        sha256: dce2abfcaba7de1d5f52c30656167165ce347e14ba1ff7ccbdc4898c7f43bb90
+        dest-filename: tempest.deb
+        x-checker-data:
+          type: html
+          url: https://gotempest.app/download/linux
+          pattern: (https://[^"]+/tempest-desktop_([\d\.\-]+)_amd64.deb)
+          is-main-source: true
+
+  - name: tempest
+    buildsystem: simple
+    build-commands:
+      - install -D tempest.sh $FLATPAK_DEST/bin/tempest
+      - install -Dm644 $FLATPAK_ID.metainfo.xml -t $FLATPAK_DEST/share/metainfo
+      - install -Dm644 $FLATPAK_ID.png -t $FLATPAK_DEST/share/icons/hicolor/512x512/apps
+      - install -Dm644 $FLATPAK_ID.desktop -t $FLATPAK_DEST/share/applications
+    sources:
+      - type: file
+        path: tempest.sh
+      - type: file
+        path: app.gotempest.Desktop.metainfo.xml
+      - type: file
+        path: app.gotempest.Desktop.png
+      - type: file
+        path: app.gotempest.Desktop.desktop
