@@ -16,6 +16,7 @@ finish-args:
   - --device=dri
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.secrets
+  - --system-talk-name=org.bluez
   # This is used to show the correct cursor on Wayland
   - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons
 
