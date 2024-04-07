@@ -53,8 +53,8 @@ modules:
       - rm -rf opt usr data.* tempest.deb
     sources:
       - type: file
-        url: https://pub-b3510bbcffe248beac5685e7c69bb744.r2.dev/tempest-desktop_1.2.0_amd64.deb
-        sha256: dce2abfcaba7de1d5f52c30656167165ce347e14ba1ff7ccbdc4898c7f43bb90
+        url: https://pub-b3510bbcffe248beac5685e7c69bb744.r2.dev/tempest-desktop_1.2.2_amd64.deb
+        sha256: 69d0b122015db699edd8ab327c79636157d056fa3762a06396ac85e28c9efc2f
         dest-filename: tempest.deb
         x-checker-data:
           type: html
