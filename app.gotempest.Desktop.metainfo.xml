@@ -17,6 +17,7 @@
     <category>Network</category>
   </categories>
   <releases>
+    <release version="1.2.7" date="2024-04-18"/>
     <release version="1.2.3" date="2024-04-07"/>
     <release version="1.2.2" date="2024-04-06"/>
     <release version="1.2.0" date="2024-04-03"/>
